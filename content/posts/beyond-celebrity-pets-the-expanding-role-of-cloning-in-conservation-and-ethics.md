@@ -9,6 +9,7 @@ description: >-
 publishedAt: '2025-11-08T13:47:51.992Z'
 source: >-
   https://www.technologyreview.com/2025/11/07/1127692/cloning-celebrity-pets-tom-brady-dog-conservation/
+category: 'ethics'
 tags:
   - animal-cloning
   - conservation

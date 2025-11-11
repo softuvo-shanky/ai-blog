@@ -3,6 +3,7 @@ title: "Welcome to the AI Insights Blog"
 description: "An automatically curated feed of breakthroughs in artificial intelligence."
 publishedAt: "2025-11-08T00:00:00.000Z"
 source: "system"
+category: "general"
 tags:
   - introduction
   - automation

@@ -6,6 +6,7 @@ description: >-
 publishedAt: '2025-11-08T13:46:20.711Z'
 source: >-
   https://www.technologyreview.com/2025/11/07/1127765/the-download-a-new-home-under-the-sea-and-cloning-pets/
+category: 'applications'
 tags:
   - undersea-habitats
   - marine-technology

@@ -9,6 +9,7 @@ description: >-
 publishedAt: '2025-11-08T13:46:37.576Z'
 source: >-
   https://www.technologyreview.com/2025/11/07/1127682/vanguard-deep-subsea-habitat-launch/
+category: 'research'
 tags:
   - subsea-habitat
   - deep-sea-exploration

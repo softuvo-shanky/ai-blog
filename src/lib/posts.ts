@@ -11,6 +11,7 @@ export type PostSummary = {
   publishedAt: string;
   source: string;
   tags: string[];
+  category: string;
 };
 
 export type Post = PostSummary & {
@@ -33,6 +34,7 @@ async function readPostFile(slug: string) {
     publishedAt,
     source = "unknown",
     tags = [],
+    category = "general",
   } = parsed.data;
 
   if (!title || !description || !publishedAt) {
@@ -46,6 +48,7 @@ async function readPostFile(slug: string) {
     publishedAt,
     source,
     tags,
+    category,
     content: parsed.content.trim(),
   } satisfies Post;
 }
@@ -71,11 +74,23 @@ export async function getAllPosts() {
       publishedAt: post.publishedAt,
       source: post.source,
       tags: post.tags,
+      category: post.category,
     }))
     .sort(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
     );
+}
+
+export async function getPostsByCategory(category: string) {
+  const allPosts = await getAllPosts();
+  return allPosts.filter((post) => post.category === category);
+}
+
+export async function getAllCategories() {
+  const posts = await getAllPosts();
+  const categories = new Set(posts.map((post) => post.category));
+  return Array.from(categories);
 }
 
 export async function listPostSlugs() {

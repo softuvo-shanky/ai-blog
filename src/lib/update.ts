@@ -5,6 +5,7 @@ import OpenAI from "openai";
 import Parser from "rss-parser";
 
 import { getPostPath, listPostSlugs } from "@/lib/posts";
+import { assignCategoryFromTags } from "@/lib/categories";
 
 export const DEFAULT_FEED_URLS = [
   "https://www.technologyreview.com/feed/",
@@ -273,12 +274,16 @@ export async function updateContent(
       const slug = ensureUniqueSlug(slugify(parsed.title), existingSlugs);
       const filePath = getPostPath(slug);
 
+      const normalizedTags = normaliseTags(parsed.tags);
+      const category = assignCategoryFromTags(normalizedTags);
+
       const file = matter.stringify(parsed.body.trim(), {
         title: parsed.title,
         description: parsed.description,
         publishedAt: new Date().toISOString(),
         source: item.link ?? item.sourceFeed,
-        tags: normaliseTags(parsed.tags),
+        tags: normalizedTags,
+        category,
       });
 
       await fs.writeFile(filePath, `${file.trimEnd()}\n`, "utf8");
